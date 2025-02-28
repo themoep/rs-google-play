@@ -18,14 +18,14 @@ reqwest = "0.12"
 bytes = "1"
 #hyper = { version = "0.14", features = ["full"] }
 #hyper-tls = "0.5"
-googleplay-protobuf = "3"
+googleplay-protobuf = { git = "ssh://git@gitlab.secpriv.tuwien.ac.at/secpriv/systemsec/code/rs-google-play-fork.git" }
 bincode = "1"
 futures = "0.3"
 tokio-dl-stream-to-disk = "1"
 serde = { version = "1", features = ["derive"] }
 
 [build-dependencies]
-googleplay-protobuf = "3"
+googleplay-protobuf = { git = "ssh://git@gitlab.secpriv.tuwien.ac.at/secpriv/systemsec/code/rs-google-play-fork.git" }
 prost = "0.13"
 bincode = "1"
 configparser = "3"
@@ -35,5 +35,3 @@ bytes = "1"
 [dev-dependencies]
 tokio = { version = "1", features = ["full"] }
 
-[patch.crates-io]
-googleplay-protobuf = { path = "./googleplay-protobuf" }

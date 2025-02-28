@@ -3,7 +3,3 @@ members = [
     "gpapi",
     "googleplay-protobuf",
 ]
-
-[patch.crates-io]
-googleplay-protobuf = { path = "./googleplay-protobuf" }
-
