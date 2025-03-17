@@ -18,14 +18,15 @@ reqwest = "0.12"
 bytes = "1"
 #hyper = { version = "0.14", features = ["full"] }
 #hyper-tls = "0.5"
-googleplay-protobuf = { git = "ssh://git@gitlab.secpriv.tuwien.ac.at/secpriv/systemsec/code/rs-google-play-fork.git" }
+googleplay-protobuf = "3"
 bincode = "1"
 futures = "0.3"
 tokio-dl-stream-to-disk = "1"
 serde = { version = "1", features = ["derive"] }
+configparser = "3"
 
 [build-dependencies]
-googleplay-protobuf = { git = "ssh://git@gitlab.secpriv.tuwien.ac.at/secpriv/systemsec/code/rs-google-play-fork.git" }
+googleplay-protobuf = "3"
 prost = "0.13"
 bincode = "1"
 configparser = "3"
