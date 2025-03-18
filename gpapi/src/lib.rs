@@ -1125,9 +1125,9 @@ fn read_device_properties_from_file<S: Into<String>>(device_properties_path: &Pa
     let device_codename_str = device_codename.into();
 
     for section in config.sections() {
-        println!("...reading '{:?}', looking for '{}'", section, device_codename_str);  
+        //println!("...reading '{:?}', looking for '{}'", section, device_codename_str);  
         if section.replace("\"", "") == device_codename_str {
-            println!("......found!");
+            //println!("......found!");
             let mut extra_info = HashMap::new();
             extra_info.insert("Build.ID".to_string(), config.get(&section, "Build.ID").unwrap_or_default());
             extra_info.insert("Vending.versionString".to_string(), config.get(&section, "Vending.versionString").unwrap_or_default());
@@ -1255,7 +1255,7 @@ fn read_device_properties_from_file<S: Into<String>>(device_properties_path: &Pa
         }
     }
 
-    panic!("Can't find device codename '{}' in {}", device_codename_str, device_properties_path.display());
+    panic!("Can't find device codename '{}' in '{}'", device_codename_str, device_properties_path.display());
 }
 
 
