@@ -274,6 +274,7 @@ impl Gpapi {
         dexmetadata_if_available: bool,
         include_additional_files: bool,
         dst_path: &Path,
+        always_appid_dir: bool,
         cb: Option<&Box<dyn Fn(String, u64) -> Box<dyn Fn(u64) -> ()>>>,
     ) -> Result<Vec<()>, GpapiError> {
         let pkg_name = pkg_name.into();
@@ -283,10 +284,10 @@ impl Gpapi {
 
         let mut dst_path = PathBuf::from(dst_path);
         if dst_path.is_dir() {
-            if (split_if_available && download_info.1.len() > 0) ||
+            if always_appid_dir ||
+               (split_if_available && download_info.1.len() > 0) ||
                (include_additional_files && download_info.2.len() > 0) || 
                (dexmetadata_if_available && download_info.3.is_some()) {
-                // TODO: add check for if dexmetadata is available
                 dst_path.push(pkg_name.clone());
                 if dst_path.is_dir() {
                     return Err(GpapiError::new(GpapiErrorKind::DirectoryExists));
