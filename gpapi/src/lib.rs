@@ -284,7 +284,8 @@ impl Gpapi {
         let mut dst_path = PathBuf::from(dst_path);
         if dst_path.is_dir() {
             if (split_if_available && download_info.1.len() > 0) ||
-               (include_additional_files && download_info.2.len() > 0){
+               (include_additional_files && download_info.2.len() > 0) || 
+               (dexmetadata_if_available && download_info.3.is_some()) {
                 // TODO: add check for if dexmetadata is available
                 dst_path.push(pkg_name.clone());
                 if dst_path.is_dir() {
@@ -1125,9 +1126,8 @@ fn read_device_properties_from_file<S: Into<String>>(device_properties_path: &Pa
     let device_codename_str = device_codename.into();
 
     for section in config.sections() {
-        //println!("...reading '{:?}', looking for '{}'", section, device_codename_str);  
+        // this is mostly from build.rs TODO: unify 
         if section.replace("\"", "") == device_codename_str {
-            //println!("......found!");
             let mut extra_info = HashMap::new();
             extra_info.insert("Build.ID".to_string(), config.get(&section, "Build.ID").unwrap_or_default());
             extra_info.insert("Vending.versionString".to_string(), config.get(&section, "Vending.versionString").unwrap_or_default());
